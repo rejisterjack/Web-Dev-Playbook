@@ -24,6 +24,70 @@ console.log("script end") */
 
 // setInterval
 
-console.log("script start")
+// console.log("script start")
+// const interValId = setInterval(() => console.log("inside interval"), 1000)
+// clearInterval(interValId)
+// console.log("script end")
 
-console.log("script end")
+// callbacks
+
+// function printNum(num1, num2, callback) {
+//   console.log(callback(num1, num2))
+// }
+
+// // callback function
+// function numbersSum(number1, number2) {
+//   return number1 + number2
+// }
+
+// printNum(3, 4, numbersSum)
+
+// callback hell
+
+// function changeText(element, text, color, time, onSuccess, onFailure) {
+//   setTimeout(() => {
+//     element.textElement = text
+//     element.style.color = color
+//     if (onSuccess) {
+//       onSuccess()
+//     } else if (onFailure) {
+//       onFailure()
+//     }
+//   }, time)
+// }
+
+// const heading1 = document.querySelector(".heading1")
+// const heading2 = document.querySelector(".heading2")
+// const heading3 = document.querySelector(".heading3")
+// const heading4 = document.querySelector(".heading4")
+// const heading5 = document.querySelector(".heading5")
+// const heading6 = document.querySelector(".heading6")
+// const heading7 = document.querySelector(".heading7")
+// const heading8 = document.querySelector(".heading8")
+// const heading9 = document.querySelector(".heading9")
+// const heading10 = document.querySelector(".heading10")
+
+// //pyramid of dom
+// changeText(heading1, "one", "red", 1000, () => {
+//   changeText(heading2, "two", "blue", 1000, () => {
+//     changeText(heading3, "three", "yellow", 1000, () => {
+//       changeText(heading4, "four", "green", 1000, () => {
+//         changeText(heading5, "five", "red", 1000, () => {
+//           changeText(heading6, "six", "blue", 1000, () => {
+//             changeText(heading7, "seven", "yellow", 1000, () => {
+//               changeText(heading8, "eight", "green", 1000, () => {
+//                 changeText(heading9, "nine", "red", 1000, () => {
+//                   changeText(heading10, "ten", "blue", 1000, () => {})
+//                 })
+//               })
+//             })
+//           })
+//         })
+//       })
+//     })
+//   })
+// })
+
+
+// promises
+
