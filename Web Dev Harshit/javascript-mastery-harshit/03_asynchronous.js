@@ -88,6 +88,35 @@ console.log("script end") */
 //   })
 // })
 
-
 // promises
+console.log("script start")
+const ingredients = ["rice", "vegetables", "salt"]
+
+for(let i=0;i<100;i++){
+  console.log("inside loop")
+}
+
+// produce primise
+
+const myPromise = new Promise((resolve, reject) => {
+  if (
+    ingredients.includes("rice") &&
+    ingredients.includes("vegetables") &&
+    ingredients.includes("salt")
+  ) {
+    resolve("you can make fried rice")
+  } else {
+    reject(new Error("you can't make fried rice"))
+  }
+})
+
+//consume promise
+
+myPromise.then((res) => console.log(res)).catch((err) => console.log(err))
+
+setTimeout(()=>{
+  console.log("inside set timeout")
+}, 0)
+
+console.log("script end")
 
