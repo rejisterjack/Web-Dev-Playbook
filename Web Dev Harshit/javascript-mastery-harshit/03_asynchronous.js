@@ -158,5 +158,59 @@ console.log("script end") */
 //   .then(() => changeText(heading9, "nine", "red"))
 //   .then(() => changeText(heading10, "ten", "blue"))
 
+/*
+// ajax ->  asynchronous javascript and xml
 
-// ajax 
+const URL = "https://jsonplaceholder.typicode.com/posts"
+const xhr = new XMLHttpRequest()
+
+xhr.open("GET", URL)
+
+// method one
+// xhr.onreadystatechange = function () {
+//   if (xhr.readyState === 4) {
+//     const response = xhr.response
+//     const data = JSON.parse(response)
+//     console.log(data)
+//   }
+// }
+
+// method two
+// onload only happens when (xhr.readyState === 4
+xhr.onload = function () {
+  const response = xhr.response
+  const data = JSON.parse(response)
+  console.log(data)
+}
+
+xhr.send() 
+*/
+
+/*
+// fetch
+fetch("https://jsonplaceholder.typicode.com/posts/1", {
+  method: "PUT",
+  body: JSON.stringify({
+    id: 1,
+    title: "foo",
+    body: "bar",
+    userId: 1,
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json))
+  */
+
+  /*
+  // async await8888iu
+  const posts = async ()=>{
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    const data = await response.json()
+    return data
+  }
+
+  posts().then((data)=>console.log(data))
+  */
