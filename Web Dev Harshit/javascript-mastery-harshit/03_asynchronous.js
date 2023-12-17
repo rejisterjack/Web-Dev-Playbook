@@ -89,34 +89,74 @@ console.log("script end") */
 // })
 
 // promises
-console.log("script start")
-const ingredients = ["rice", "vegetables", "salt"]
+// console.log("script start")
+// const ingredients = ["rice", "vegetables", "salt"]
 
-for(let i=0;i<100;i++){
-  console.log("inside loop")
-}
+// for(let i=0;i<100;i++){
+//   console.log("inside loop")
+// }
 
 // produce primise
 
-const myPromise = new Promise((resolve, reject) => {
-  if (
-    ingredients.includes("rice") &&
-    ingredients.includes("vegetables") &&
-    ingredients.includes("salt")
-  ) {
-    resolve("you can make fried rice")
-  } else {
-    reject(new Error("you can't make fried rice"))
-  }
-})
+// const myPromise = new Promise((resolve, reject) => {
+//   if (
+//     ingredients.includes("rice") &&
+//     ingredients.includes("vegetables") &&
+//     ingredients.includes("salt")
+//   ) {
+//     resolve("you can make fried rice")
+//   } else {
+//     reject(new Error("you can't make fried rice"))
+//   }
+// })
 
 //consume promise
 
-myPromise.then((res) => console.log(res)).catch((err) => console.log(err))
+// myPromise.then((res) => console.log(res)).catch((err) => console.log(err))
 
-setTimeout(()=>{
-  console.log("inside set timeout")
-}, 0)
+// setTimeout(()=>{
+//   console.log("inside set timeout")
+// }, 0)
 
-console.log("script end")
+// console.log("script end")
 
+// promisify callback hell
+
+// function changeText(element, text, color) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       if (element) {
+//         element.innerText = text
+//         element.style.color = color
+//         resolve()
+//       } else {
+//         reject()
+//       }
+//     }, 1000)
+//   })
+// }
+
+// const heading1 = document.querySelector(".heading1")
+// const heading2 = document.querySelector(".heading2")
+// const heading3 = document.querySelector(".heading3")
+// const heading4 = document.querySelector(".heading4")
+// const heading5 = document.querySelector(".heading5")
+// const heading6 = document.querySelector(".heading6")
+// const heading7 = document.querySelector(".heading7")
+// const heading8 = document.querySelector(".heading8")
+// const heading9 = document.querySelector(".heading9")
+// const heading10 = document.querySelector(".heading10")
+
+// changeText(heading1, "one", "red")
+//   .then(() => changeText(heading2, "two", "blue"))
+//   .then(() => changeText(heading3, "three", "yellow"))
+//   .then(() => changeText(heading4, "four", "green"))
+//   .then(() => changeText(heading5, "five", "red"))
+//   .then(() => changeText(heading6, "six", "blue"))
+//   .then(() => changeText(heading7, "seven", "yellow"))
+//   .then(() => changeText(heading8, "eight", "green"))
+//   .then(() => changeText(heading9, "nine", "red"))
+//   .then(() => changeText(heading10, "ten", "blue"))
+
+
+// ajax 
