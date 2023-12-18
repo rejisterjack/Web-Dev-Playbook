@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@reduxjs/toolkit": "^2.0.1"
+    "@reduxjs/toolkit": "^2.0.1",
+    "redux-logger": "^3.0.6"
   }
 }
