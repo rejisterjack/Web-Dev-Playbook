@@ -1,0 +1,2 @@
+write inside file using promise
+this is new file add using promise
