@@ -1,9 +1,6 @@
-import React from 'react'
+import { atom } from "recoil"
 
-function count() {
-  return (
-    <div>count</div>
-  )
-}
-
-export default count
+export const countAtom = atom({
+  key: "countAtom", 
+  default:0
+})
