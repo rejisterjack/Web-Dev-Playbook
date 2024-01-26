@@ -12,16 +12,17 @@ datasource db {
 
 model User {
   // id   Int    @id @default(autoincrement())
-  id             String           @id @default(uuid())
-  name           String
-  age            Int
-  email          String           @unique
+  id               String          @id @default(uuid())
+  name             String
+  age              Int
+  email            String          @unique
   // isAdmin        Boolean
-  role           Role             @default(BASIC)
-  preferences    Json
-  writtenPosts   Post[]           @relation("WrittenPosts")
-  favoritePosts  Post[]           @relation("FavoritePosts")
-  UserPreference UserPreference[]
+  role             Role            @default(BASIC)
+  preferences      Json?
+  writtenPosts     Post[]          @relation("WrittenPosts")
+  favoritePosts    Post[]          @relation("FavoritePosts")
+  userPreference   UserPreference? @relation(fields: [userPreferenceId], references: [id])
+  userPreferenceId String?         @unique
 
   //block based attributes
   @@unique([name, age])
@@ -31,8 +32,7 @@ model User {
 model UserPreference {
   id           String  @id @default(uuid())
   emailUpdates Boolean
-  user         User    @relation(fields: [userId], references: [id])
-  userId       String  @unique
+  user         User?
 }
 
 model Post {

@@ -5,5 +5,9 @@
     "strict": true,
     "lib": ["es2016", "esnext.asynciterable"],
     "esModuleInterop": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
