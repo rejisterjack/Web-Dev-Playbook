@@ -34,7 +34,7 @@ RUN chown -R app:app .
 USER app
 
 # install dependencies
-RUN npm install
+RUN yarn
 
 # copy the rest of the files to the working directory
 COPY . .
@@ -43,4 +43,4 @@ COPY . .
 EXPOSE 5173
 
 # command to run the app
-CMD npm run dev
+CMD yarn dev
