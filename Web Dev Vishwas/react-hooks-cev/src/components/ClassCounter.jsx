@@ -24,6 +24,19 @@ export default class ClassCounter extends Component {
     })
   }
 
+  // lifecycle methods
+  componentDidMount = () => {
+    console.log("component is mounted")
+  }
+
+  componentDidUpdate = () => {
+    console.log("component is updated")
+  }
+
+  componentWillUnmount = () => {
+    console.log("component is unmounted")
+  }
+
   render() {
     return (
       <div>
