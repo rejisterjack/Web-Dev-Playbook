@@ -6,6 +6,7 @@ export default class ClassCounter extends Component {
 
     this.state = {
       count: 0,
+      name: "",
     }
   }
 
@@ -29,8 +30,13 @@ export default class ClassCounter extends Component {
     console.log("component is mounted")
   }
 
-  componentDidUpdate = () => {
-    console.log("component is updated")
+  componentDidUpdate = (prevProps, prevState) => {
+    // console.log(prevProps, prevState, this.state)
+    
+    // conditionally update or dependency
+    if (prevState.count !== this.state.count) {
+      console.log("component is updated")
+    }
   }
 
   componentWillUnmount = () => {
@@ -40,6 +46,17 @@ export default class ClassCounter extends Component {
   render() {
     return (
       <div>
+        <input
+          type="text"
+          className="form-control mb-2"
+          value={this.state.name}
+          onChange={(e) => {
+            this.setState({
+              name: e.target.value,
+            })
+          }}
+        />
+        <h4>name is {this.state.name}</h4>
         <button className="btn btn-primary" onClick={this.incrementCount}>
           Count {this.state.count}
         </button>

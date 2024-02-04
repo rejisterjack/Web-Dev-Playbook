@@ -1,7 +1,10 @@
 import ClassCounter from "./components/ClassCounter"
+import ClassMouse from "./components/ClassMouse"
 import StateCounter from "./components/StateCounter"
 import StateCounterArray from "./components/StateCounterArray"
 import StateCounterObject from "./components/StateCounterObject"
+import UseEffectCounter from "./components/UseEffectCounter"
+import UseEffectMouse from "./components/UseEffectMouse"
 
 function App() {
   return (
@@ -9,7 +12,10 @@ function App() {
       {/* <ClassCounter /> */}
       {/* <StateCounter /> */}
       {/* <StateCounterObject /> */}
-      <StateCounterArray />
+      {/* <StateCounterArray /> */}
+      {/* <UseEffectCounter /> */}
+      {/* <ClassMouse /> */}
+      <UseEffectMouse />
     </div>
   )
 }
