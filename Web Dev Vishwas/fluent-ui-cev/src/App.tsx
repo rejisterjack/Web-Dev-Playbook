@@ -1,5 +1,7 @@
+import { FluentDatePickerExample } from "./components/FluentDatePickerExample"
+
 const App = () => {
-  return <div>App</div>
+  return <div><FluentDatePickerExample /></div>
 }
 
 export default App
