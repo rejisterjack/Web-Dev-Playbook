@@ -9,11 +9,6 @@ const Products = () => {
   return (
     <div>
       <div className="input-group mb-3">
-        <div className="input-group-prepend">
-          <span className="input-group-text" id="basic-addon1">
-            @
-          </span>
-        </div>
         <input
           type="text"
           className="form-control"
@@ -21,6 +16,11 @@ const Products = () => {
           aria-label="Username"
           aria-describedby="basic-addon1"
         />
+        <div className="input-group-prepend">
+          <span className="input-group-text" id="basic-addon1">
+            @
+          </span>
+        </div>
       </div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <ul className="navbar-nav d-flex flex-row justify-content-center gap-2 w-100 px-2">

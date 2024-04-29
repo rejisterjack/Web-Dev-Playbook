@@ -7,6 +7,9 @@ import Products from "./components/Products"
 import NoMatch from "./components/NoMatch"
 import NewProducts from "./components/NewProducts"
 import FeaturedProducts from "./components/FeaturedProducts"
+import User from "./components/User"
+import Admin from "./components/Admin"
+import UserDetails from "./components/UserDetails"
 
 const App = () => {
   return (
@@ -14,13 +17,27 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/order-summary" element={<OrderSummary />} />
-        <Route path="/products" element={<Products />}>
+        <Route path="about" element={<About />} />
+        <Route path="order-summary" element={<OrderSummary />} />
+        <Route path="products" element={<Products />}>
           <Route index element={<NewProducts />} />
           <Route path="new" element={<NewProducts />} />
           <Route path="featured" element={<FeaturedProducts />} />
         </Route>
+
+        {/* witout outlet */}
+        {/* <Route path="user">
+          <Route index element={<User />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path=":userId" element={<UserDetails />} />
+        </Route> */}
+
+        {/* with outlet */}
+        <Route path="user" element={<User />}>
+          <Route path="admin" element={<Admin />} />
+          <Route path=":userId" element={<UserDetails />} />
+        </Route>
+
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>

@@ -33,6 +33,14 @@ const Navbar = () => {
             className={"nav-link"}
           />
         </li>
+        <li className="nav-item active">
+          <NavLink
+            to={"/user"}
+            children={"Users"}
+            style={navLinkStyles}
+            className={"nav-link"}
+          />
+        </li>
       </ul>
     </nav>
   )
