@@ -65,7 +65,9 @@ const DayPickerStrings: IDatePickerStrings = {
 }
 
 export const FluentDatePickerExample: React.FunctionComponent = () => {
-  const [selectedDate, setSelectedDate] = React.useState<Date | null>(null)
+  const [selectedDate, setSelectedDate] = React.useState<
+    Date | null | undefined
+  >(null)
 
   const handleDateChange = (date: Date | null | undefined) => {
     setSelectedDate(date)
