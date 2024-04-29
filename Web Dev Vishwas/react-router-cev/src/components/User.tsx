@@ -1,4 +1,4 @@
-import { MouseEventHandler, useState } from "react"
+import { MouseEventHandler } from "react"
 import { Outlet, useNavigate, useSearchParams } from "react-router-dom"
 
 const User = () => {
