@@ -1,5 +1,5 @@
 const ComponentA = () => {
-  return <div>01.ComponentA</div>
+  return <div>ComponentA</div>
 }
 
 export default ComponentA
