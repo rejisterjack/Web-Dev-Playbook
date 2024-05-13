@@ -1,5 +1,7 @@
+import ComponentE from "./05.ComponentE"
+
 const ComponentD = () => {
-  return <div>ComponentD</div>
+  return <div><ComponentE /></div>
 }
 
 export default ComponentD
