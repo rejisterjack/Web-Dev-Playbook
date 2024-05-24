@@ -1,14 +1,9 @@
 {
   "contacts": [
     {
-      "id": 70,
-      "name": "rupam",
-      "email": "rupam@gmail.com"
-    },
-    {
-      "name": "rejisterjack",
+      "name": "Rejister Jack",
       "email": "rejister@gmail.com",
-      "id": 535
+      "id": "535"
     }
   ]
 }
