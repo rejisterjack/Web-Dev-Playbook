@@ -25,7 +25,10 @@ const UseEffectFetch = () => {
   return (
     <div>
       <input type="text" className="form-control" onChange={(e) => setId(e.target.value)} />
-      <button className="btn btn-primary" onClick={() => setFetchPost(true)}>Fetch Post</button>
+      <button
+        className="btn btn-primary my-2"
+        onClick={() => setFetchPost(true)}
+      >Fetch Post</button>
       <div>
         {loading ?
           <h2>Loading...</h2> :
