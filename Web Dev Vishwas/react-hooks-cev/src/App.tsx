@@ -4,6 +4,7 @@ import UseStateArray from "./components/03.UseStateArray"
 import UseEffectHook from "./components/04.UseEffectHook"
 import UseEffectPointer, { TogglePointer } from "./components/05.UseEffectPointer"
 import UseEffectFetch from "./components/06.UseEffectFetch"
+import UseContextHook from "./components/07.UseContextHook"
 
 const App = () => {
   return <div>
@@ -13,7 +14,8 @@ const App = () => {
     {/* <UseEffectHook /> */}
     {/* <UseEffectPointer /> */}
     {/* <TogglePointer /> */}
-    <UseEffectFetch />
+    {/* <UseEffectFetch /> */}
+    <UseContextHook />
   </div>
 }
 
