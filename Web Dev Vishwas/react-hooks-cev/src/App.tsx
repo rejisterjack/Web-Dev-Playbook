@@ -6,6 +6,8 @@ import UseEffectPointer, { TogglePointer } from "./components/05.UseEffectPointe
 import UseEffectFetch from "./components/06.UseEffectFetch"
 import UseContextHook from "./components/07.UseContextHook"
 import UseReducerHook from "./components/08.UseReducerHook"
+import UseReducerMultiple from "./components/09.UseReducerMultiple"
+import UseReducerContext from "./components/10.UseReducerContext"
 
 const App = () => {
   return <div>
@@ -17,7 +19,9 @@ const App = () => {
     {/* <TogglePointer /> */}
     {/* <UseEffectFetch /> */}
     {/* <UseContextHook /> */}
-    <UseReducerHook />
+    {/* <UseReducerHook /> */}
+    {/* <UseReducerMultiple /> */}
+    <UseReducerContext />
   </div>
 }
 

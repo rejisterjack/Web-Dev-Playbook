@@ -3,14 +3,16 @@ import axios from "axios"
 
 const initialState = {
   loading: false,
-  users: [],
-  error: "",
+  users: [] as string[] | undefined | void,
+  error: "" as string | undefined,
 }
 
 const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
-  return axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
-    response.data.map((user: { id: string }) => user.id)
-  })
+  return axios
+    .get("https://jsonplaceholder.typicode.com/users")
+    .then((response) => {
+      response.data.map((user: { id: string }) => user.id)
+    })
 })
 
 const userSlice = createSlice({
