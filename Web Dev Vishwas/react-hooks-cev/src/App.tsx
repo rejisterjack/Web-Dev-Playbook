@@ -9,7 +9,9 @@
 // import UseReducerMultiple from "./components/09.UseReducerMultiple"
 // import UseReducerContext from "./components/10.UseReducerContext"
 // import UseCallbackHook from "./components/11.UseCallbackHook"
-import UseMemoHook from "./components/12.UseMemoHook"
+// import UseMemoHook from "./components/12.UseMemoHook"
+// import UseRefHook from "./components/13.UseRefHook"
+import UseRefInterval from "./components/14.UseRefInterval"
 
 const App = () => {
   return (
@@ -26,7 +28,9 @@ const App = () => {
       {/* <UseReducerMultiple /> */}
       {/* <UseReducerContext /> */}
       {/* <UseCallbackHook /> */}
-      <UseMemoHook />
+      {/* <UseMemoHook /> */}
+      {/* <UseRefHook /> */}
+      <UseRefInterval />
     </div>
   )
 }
