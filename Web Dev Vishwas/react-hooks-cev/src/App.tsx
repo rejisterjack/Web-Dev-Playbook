@@ -11,7 +11,7 @@
 // import UseCallbackHook from "./components/11.UseCallbackHook"
 // import UseMemoHook from "./components/12.UseMemoHook"
 // import UseRefHook from "./components/13.UseRefHook"
-import UseRefInterval from "./components/14.UseRefInterval"
+// import UseRefInterval from "./components/14.UseRefInterval"
 
 const App = () => {
   return (
@@ -30,7 +30,7 @@ const App = () => {
       {/* <UseCallbackHook /> */}
       {/* <UseMemoHook /> */}
       {/* <UseRefHook /> */}
-      <UseRefInterval />
+      {/* <UseRefInterval /> */}
     </div>
   )
 }
