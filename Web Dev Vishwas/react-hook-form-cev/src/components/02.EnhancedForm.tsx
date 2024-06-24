@@ -52,7 +52,7 @@ const EnhancedForm = () => {
     console.log(data)
   }
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="form-group">
           <label htmlFor="username">Username</label>
@@ -127,14 +127,14 @@ const EnhancedForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="phoneNumbers">Phone Number 2</label>
+          <label htmlFor="phoneNumbers">Phone Number 1</label>
           <input
             type="text"
             className="form-control"
             id="phoneNumbers"
             {...register("phoneNumbers.0")}
           />
-          <label htmlFor="phoneNumbers">Phone Number 1</label>
+          <label htmlFor="phoneNumbers">Phone Number 2</label>
           <input
             type="text"
             className="form-control"
@@ -206,7 +206,7 @@ const EnhancedForm = () => {
           />
           <span>{formState.errors.dob?.message}</span>
         </div>
-        <button type="submit" className="btn btn-primary mt-2">
+        <button type="submit" className="btn btn-primary my-2">
           Submit
         </button>
       </form>
