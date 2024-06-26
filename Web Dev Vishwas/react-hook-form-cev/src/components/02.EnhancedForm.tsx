@@ -19,7 +19,7 @@ type FormValues = {
 }
 
 const EnhancedForm = () => {
-  const { register, handleSubmit, control, formState } = useForm<FormValues>({
+  const { register, handleSubmit, control, formState, watch } = useForm<FormValues>({
     // normal values
     defaultValues: {
       username: "John Doe",
