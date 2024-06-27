@@ -1,5 +1,6 @@
-import { useForm, useFieldArray } from "react-hook-form"
+import { useForm, useFieldArray, FieldErrors } from "react-hook-form"
 import { DevTool } from "@hookform/devtools"
+// import { useEffect } from "react"
 
 type FormValues = {
   username: string
@@ -19,7 +20,16 @@ type FormValues = {
 }
 
 const EnhancedForm = () => {
-  const { register, handleSubmit, control, formState, watch } = useForm<FormValues>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState,
+    watch,
+    setValue,
+    getValues,
+    reset,
+  } = useForm<FormValues>({
     // normal values
     defaultValues: {
       username: "John Doe",
@@ -48,12 +58,43 @@ const EnhancedForm = () => {
     control,
   })
 
+  // watch specific fields
+  // const watchAge = watch("age")
+  // const watchMultipleFields = watch(["username", "email", "age"])
+  // const watchEntireForm = watch()
+  // useEffect(() => {
+  //   const subscription = watch((value, { name, type }) => {
+  //     console.log(value, name, type)
+  //   })
+  //   return () => subscription.unsubscribe()
+  // }, [watch])
+
+  const handleSetValue = () => {
+    // setValue("age", 0)
+    setValue("age", 0, {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    })
+  }
+
+  const handleGetValues = () => {
+    const values = getValues()
+    console.log(values)
+  }
+
   const onSubmit = (data: FormValues) => {
     console.log(data)
+    formState.isSubmitSuccessful && reset()
+  }
+
+  const onError = (errors: FieldErrors<FormValues>) => {
+    console.log("form errors: ", errors)
   }
   return (
     <div className="container">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      {/* {JSON.stringify(watchEntireForm)} */}
+      <form onSubmit={handleSubmit(onSubmit, onError)} noValidate>
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -68,7 +109,9 @@ const EnhancedForm = () => {
               },
             })}
           />
-          <span>{formState.errors.username?.message}</span>
+          <span className="text-danger">
+            {formState.errors.username?.message}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -90,7 +133,7 @@ const EnhancedForm = () => {
               },
             })}
           />
-          <span>{formState.errors.email?.message}</span>
+          <span className="text-danger">{formState.errors.email?.message}</span>
         </div>
         <div className="form-group">
           <label htmlFor="channel">Channel</label>
@@ -106,7 +149,9 @@ const EnhancedForm = () => {
               },
             })}
           />
-          <span>{formState.errors.channel?.message}</span>
+          <span className="text-danger">
+            {formState.errors.channel?.message}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="facebook">Facebook</label>
@@ -114,8 +159,14 @@ const EnhancedForm = () => {
             type="text"
             className="form-control"
             id="facebook"
-            {...register("social.facebook")}
+            {...register("social.facebook", {
+              required: "Facebook is required",
+              disabled: watch("channel") === "",
+            })}
           />
+          <span className="text-danger">
+            {formState.errors.social?.facebook?.message}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="twitter">Twitter</label>
@@ -123,8 +174,14 @@ const EnhancedForm = () => {
             type="text"
             className="form-control"
             id="twitter"
-            {...register("social.twitter")}
+            {...register("social.twitter", {
+              required: "Twitter is required",
+              disabled: watch("channel") === "",
+            })}
           />
+          <span className="text-danger">
+            {formState.errors.social?.twitter?.message}
+          </span>
         </div>
         <div className="form-group">
           <label htmlFor="phoneNumbers">Phone Number 1</label>
@@ -171,6 +228,18 @@ const EnhancedForm = () => {
           >
             Add Phone Number
           </button>
+          <button
+            className="btn btn-primary btn-sm mx-2 mt-2"
+            onClick={handleSetValue}
+          >
+            set age
+          </button>
+          <button
+            className="btn btn-primary btn-sm mt-2"
+            onClick={handleGetValues}
+          >
+            get values
+          </button>
         </div>
         <div className="form-group">
           <label htmlFor="age">Age</label>
@@ -187,7 +256,7 @@ const EnhancedForm = () => {
               },
             })}
           />
-          <span>{formState.errors.age?.message}</span>
+          <span className="text-danger">{formState.errors.age?.message}</span>
         </div>
         <div className="form-group">
           <label htmlFor="dob">Date of Birth</label>
@@ -204,9 +273,13 @@ const EnhancedForm = () => {
               },
             })}
           />
-          <span>{formState.errors.dob?.message}</span>
+          <span className="text-danger">{formState.errors.dob?.message}</span>
         </div>
-        <button type="submit" className="btn btn-primary my-2">
+        <button
+          disabled={!formState.isDirty || !formState.isValid}
+          type="submit"
+          className="btn btn-primary my-2"
+        >
           Submit
         </button>
       </form>

@@ -1,15 +1,15 @@
 const Header = () => {
   return (
-    <div className="header d-flex">
-      <div className="logo-container">
-        <img src="/swiggy.svg" alt="swiggy" className="logo w-25" />
+    <div className="flex flex-row items-center justify-between py-2 px-4 bg-gray-100">
+      <div>
+        <img src="/swiggy.svg" alt="swiggy" className=" h-10" />
       </div>
-      <div className="nav-items">
-        <ul className="list-group ">
-          <li className="list-group-item">Home</li>
-          <li className="list-group-item">About</li>
-          <li className="list-group-item">Contact</li>
-          <li className="list-group-item">Cart</li>
+      <div>
+        <ul className="flex flex-row items-center gap-2">
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+          <li>Cart</li>
         </ul>
       </div>
     </div>
