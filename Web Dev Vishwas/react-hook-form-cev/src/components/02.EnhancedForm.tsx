@@ -29,6 +29,7 @@ const EnhancedForm = () => {
     setValue,
     getValues,
     reset,
+    trigger,
   } = useForm<FormValues>({
     // normal values
     defaultValues: {
@@ -44,7 +45,7 @@ const EnhancedForm = () => {
       age: 0,
       dob: new Date(),
     },
-
+    mode: "onChange", // onChange, onBlur, onSubmit
     // async values
     // defaultValues: async () => {
     //   const response = await fetch("https://jsonplaceholder.typicode.com/users/1")
@@ -239,6 +240,12 @@ const EnhancedForm = () => {
             onClick={handleGetValues}
           >
             get values
+          </button>
+          <button
+            className="btn btn-primary btn-sm mt-2"
+            onClick={() => trigger()}
+          >
+            validate
           </button>
         </div>
         <div className="form-group">
