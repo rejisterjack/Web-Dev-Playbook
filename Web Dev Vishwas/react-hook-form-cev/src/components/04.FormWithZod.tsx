@@ -44,7 +44,7 @@ const FormWithZod: React.FC = () => {
           <input
             type="text"
             id="username"
-            {...register("username", { required: true })}
+            {...register("username")}
             className="form-control"
           />
           {errors.username && (
@@ -59,7 +59,7 @@ const FormWithZod: React.FC = () => {
           <input
             type="email"
             id="email"
-            {...register("email", { required: true })}
+            {...register("email")}
             className="form-control"
           />
           {errors.email && (
@@ -74,7 +74,7 @@ const FormWithZod: React.FC = () => {
           <input
             type="text"
             id="channel"
-            {...register("channel", { required: true })}
+            {...register("channel")}
             className="form-control"
           />
           {errors.channel && (
