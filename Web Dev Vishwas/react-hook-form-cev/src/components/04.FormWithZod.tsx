@@ -1,5 +1,7 @@
 import React from "react"
 import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 interface FormData {
   username: string
@@ -7,12 +9,28 @@ interface FormData {
   channel: string
 }
 
+const schema = z.object({
+  username: z.string().nonempty("Username is required"),
+  email: z
+    .string()
+    .nonempty("Email is required")
+    .email("Email format is not valid"),
+  channel: z.string().nonempty("Channel is required"),
+})
+
 const FormWithZod: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<FormData>({
+    defaultValues: {
+      username: "",
+      email: "",
+      channel: "",
+    },
+    resolver: zodResolver(schema),
+  })
 
   const onSubmit = (data: FormData) => {
     console.log(data)
@@ -30,7 +48,7 @@ const FormWithZod: React.FC = () => {
             className="form-control"
           />
           {errors.username && (
-            <span className="text-danger">This field is required</span>
+            <span className="text-danger">{errors.username?.message}</span>
           )}
         </div>
 
@@ -45,9 +63,7 @@ const FormWithZod: React.FC = () => {
             className="form-control"
           />
           {errors.email && (
-            <span className="text-danger">
-              Please enter a valid email address
-            </span>
+            <span className="text-danger">{errors.email?.message}</span>
           )}
         </div>
 
@@ -62,11 +78,11 @@ const FormWithZod: React.FC = () => {
             className="form-control"
           />
           {errors.channel && (
-            <span className="text-danger">This field is required</span>
+            <span className="text-danger">{errors.channel?.message}</span>
           )}
         </div>
 
-        <button type="submit" className="btn btn-primary btn-sm mt-2">
+        <button type="submit" className="btn btn-primary btn-sm mt-4">
           Submit
         </button>
       </form>

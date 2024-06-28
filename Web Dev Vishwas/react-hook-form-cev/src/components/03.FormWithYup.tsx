@@ -1,3 +1,5 @@
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
 import React from "react"
 import { useForm } from "react-hook-form"
 
@@ -7,12 +9,28 @@ interface FormData {
   channel: string
 }
 
+const schema = yup.object({
+  username: yup.string().required("Username is required"),
+  email: yup
+    .string()
+    .email("Email format is not valid")
+    .required("Email is required"),
+  channel: yup.string().required("Channel is required"),
+})
+
 const FormWithYup: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<FormData>({
+    defaultValues: {
+      username: "",
+      email: "",
+      channel: "",
+    },
+    resolver: yupResolver(schema),
+  })
 
   const onSubmit = (data: FormData) => {
     console.log(data)
@@ -22,13 +40,11 @@ const FormWithYup: React.FC = () => {
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className="form-group">
-          <label htmlFor="username">
-            Username
-          </label>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             id="username"
-            {...register("username", { required: true })}
+            {...register("username")}
             className="form-control"
           />
           {errors.username && (
@@ -68,10 +84,7 @@ const FormWithYup: React.FC = () => {
           )}
         </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary btn-sm mt-2"
-        >
+        <button type="submit" className="btn btn-primary btn-sm mt-4">
           Submit
         </button>
       </form>
