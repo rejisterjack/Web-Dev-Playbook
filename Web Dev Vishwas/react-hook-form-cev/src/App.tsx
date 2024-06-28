@@ -1,5 +1,6 @@
 // import BasicForm from "./components/01.BasicForm"
-import EnhancedForm from "./components/02.EnhancedForm"
+// import EnhancedForm from "./components/02.EnhancedForm"
+import FormWithYup from "./components/03.FormWithYup"
 
 const App = () => {
   return (
@@ -8,7 +9,8 @@ const App = () => {
         <div className="row">
           <div className="col">
             {/* <BasicForm /> */}
-            <EnhancedForm />
+            {/* <EnhancedForm /> */}
+            <FormWithYup />
           </div>
         </div>
       </div>
