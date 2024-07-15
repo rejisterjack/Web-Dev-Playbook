@@ -1,0 +1,11 @@
+.container {
+  height: 100px;
+  margin: 0 auto;
+  padding: 50px;
+  /* background-color: red; */
+  background-color: #ff00ff;
+  background-color: rgb(red, green, blue);
+  background-color: hsl(249, 77%, 58%);
+}
+
+0

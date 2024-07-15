@@ -1,7 +1,7 @@
 import { useTable, useSortBy, usePagination } from "react-table"
 
 const data = [
-  { id: 1, name: "John Doe", gender: "Male", salary: 50000,},
+  { id: 1, name: "John Doe", gender: "Male", salary: 50000, random:"random"},
   { id: 2, name: "Jane Smith", gender: "Female", salary: 60000 },
   { id: 3, name: "Mike Johnson", gender: "Male", salary: 55000 },
   { id: 4, name: "Emily Davis", gender: "Female", salary: 65000 },
