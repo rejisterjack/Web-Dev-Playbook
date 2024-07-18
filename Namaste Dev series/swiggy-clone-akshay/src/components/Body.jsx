@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 // import { restList as restListData } from "../utils/mockData"
 import RestCard from "./RestCard"
 import ShimmerCard from "./ShimmerCard"
+import { Link } from "react-router-dom"
 
 const Body = () => {
   const [restList, setRestList] = useState([])
@@ -16,17 +17,19 @@ const Body = () => {
 
   useEffect(() => {
     fetchData()
-    setIsLoading(false)
   }, [])
 
   const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP-WEB-LISTING")
+    setIsLoading(true)
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.51800&lng=88.38320&page_type=DESKTOP-WEB-LISTING"
+    )
     const response = await data.json()
-    const restList = response.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    console.log(restList)
+    const restList =
+      response.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    setIsLoading(false)
     setRestList(restList)
   }
-
 
   return (
     <div>
@@ -48,11 +51,15 @@ const Body = () => {
         </button>
       </div>
       <div className="rest-container flex flex-row flex-wrap gap-2 p-4 pt-0">
-        {restList.length !== 0 ? restList.map((item) => (
-          <RestCard key={item.info.id} restData={item} />
-        )) : Array(15).fill().map((_, index) => (
-          <ShimmerCard key={index} />
-        ))}
+        {restList.length !== 0
+          ? restList.map((item) => (
+              <Link to={`/restaurants/${item.info.id}`} key={item.info.id}>
+                <RestCard key={item.info.id} restData={item} />
+              </Link>
+            ))
+          : Array(15)
+              .fill()
+              .map((_, index) => <ShimmerCard key={index} />)}
       </div>
     </div>
   )
