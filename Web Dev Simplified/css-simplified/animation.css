@@ -1,0 +1,10 @@
+.container {
+  height: 200px;
+  width: 200px;
+  background-color: red;
+  transition: all 0.5s linear 0.5s;
+  /* property duration timing-function delay */
+}
+.container:hover {
+  background-color: blue;
+}

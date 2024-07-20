@@ -1,11 +1,67 @@
-.container {
-  height: 100px;
-  margin: 0 auto;
-  padding: 50px;
-  /* background-color: red; */
-  background-color: #ff00ff;
-  background-color: rgb(red, green, blue);
-  background-color: hsl(249, 77%, 58%);
+body {
+  font-family: sans-serif;
 }
 
-0
+/* advance concepts */
+
+:root {
+  /* define variables in css */
+  --primary-color: green;
+}
+
+/* h2 {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+p {
+  color: var(--primary-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  font-size: 1rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+} */
+
+/* advance selectors */
+
+/* > = direch child */
+/* ^ = starts with */
+/* $ = ends with */
+/* * = any where */
+/* ~ = sibling selector */
+/* + = very first sibling selector */
+
+.avc-div p {
+  color: red;
+}
+.avc-div > p {
+  color: blue;
+}
+.avc-div[data-attr="hello"] {
+  background-color: red;
+}
+.avc-div[data-attr ^= "hel"] {
+  background-color: blue;
+}
+.avc-div[data-attr $= "llo"] {
+  background-color: green;
+}
+.avc-div[data-attr *= "ell"] {
+  background-color: yellow;
+}
+
+/* : = sudo classes */
+/* :: = sudo elements */
+
+p::first-letter {
+  font-size: 2rem;
+}
+
