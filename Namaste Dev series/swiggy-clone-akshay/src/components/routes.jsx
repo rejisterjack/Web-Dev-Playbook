@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom"
-import Body from "./components/Body"
-import Error from "./components/Error"
-import About from "./components/About"
-import Contact from "./components/Contact"
-import Cart from "./components/Cart"
-import RestMenu from "./components/RestMenu"
+import Body from "./Body"
+import Error from "./Error"
+import About from "./About"
+import Contact from "./Contact"
+import Cart from "./Cart"
+import RestMenu from "./RestMenu"
 import App from "../App"
 const appRouter = createBrowserRouter([
   {
