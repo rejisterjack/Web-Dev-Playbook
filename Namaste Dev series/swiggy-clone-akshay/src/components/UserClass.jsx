@@ -35,7 +35,6 @@ export class UserClass extends React.Component {
 }
 
 // lifecycle of class based components is completed 1:06:09
-
 /*
 in parent child class based component, render method goes like this:
 
