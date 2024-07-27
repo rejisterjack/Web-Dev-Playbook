@@ -34,7 +34,6 @@ export class UserClass extends React.Component {
   }
 }
 
-// lifecycle of class based components is completed 1:06:09
 /*
 in parent child class based component, render method goes like this:
 
@@ -47,4 +46,13 @@ in parent child class based component, render method goes like this:
 7. componentWillUnmount of child class is called
 8. componentWillUnmount of parent class is called
 9. componentDidMount of parent class is called
+
+render phase
+  constructor phase
+  render phase
+
+commit phase
+  componentDidMount phase
+  componentDidUpdate phase
+  componentWillUnmount phase
 */
