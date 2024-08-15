@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants"
 
 const RestCard = ({ restData }) => {
   return (
-    <div className="rounded-lg bg-slate-100 p-2 cursor-pointer hover:bg-slate-200 box-border flex flex-col flex-1 max-w-44 min-w-40 overflow-hidden min-h-full justify-between">
+    <div className="rounded-lg bg-slate-100 p-2 cursor-pointer hover:bg-slate-200 box-border flex flex-col flex-1 overflow-hidden min-h-full justify-between">
       <div>
         <img
           src={`${CDN_URL}${restData.info.cloudinaryImageId}`}

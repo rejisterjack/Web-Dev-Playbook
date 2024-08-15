@@ -19,3 +19,9 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #777;
 }
+
+.rest-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}

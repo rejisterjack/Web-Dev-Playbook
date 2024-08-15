@@ -5,30 +5,20 @@ import { useEffect, useState } from "react"
 import RestCard from "./RestCard"
 import ShimmerCard from "./ShimmerCard"
 import { Link } from "react-router-dom"
+import { useRestMenu } from "../utils/useRestMenu"
 
 const Body = () => {
+  const [restMenu] = useRestMenu()
   const [restList, setRestList] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
 
+  useEffect(() => {
+    setRestList(restMenu)
+  }, [restMenu])
+
+  console.log(restList)
   const handleFilter = () => {
     const filteredList = restList.filter((item) => item.info.avgRating > 4)
     setRestList(filteredList)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  const fetchData = async () => {
-    setIsLoading(true)
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.51800&lng=88.38320&page_type=DESKTOP-WEB-LISTING"
-    )
-    const response = await data.json()
-    const restList =
-      response.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
-    setIsLoading(false)
-    setRestList(restList)
   }
 
   return (
@@ -50,7 +40,7 @@ const Body = () => {
           Top Rated
         </button>
       </div>
-      <div className="rest-container flex flex-row flex-wrap gap-2 p-4 pt-0">
+      <div className="rest-container p-4 pt-0">
         {restList.length !== 0
           ? restList.map((item) => (
               <Link to={`/restaurants/${item.info.id}`} key={item.info.id}>
