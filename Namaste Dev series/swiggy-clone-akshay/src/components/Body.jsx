@@ -6,6 +6,7 @@ import RestCard from "./RestCard"
 import ShimmerCard from "./ShimmerCard"
 import { Link } from "react-router-dom"
 import { useRestMenu } from "../utils/useRestMenu"
+import withPromotedLabel from "../utils/WithPromoted"
 
 const Body = () => {
   const [restMenu] = useRestMenu()
@@ -20,6 +21,8 @@ const Body = () => {
     const filteredList = restList.filter((item) => item.info.avgRating > 4)
     setRestList(filteredList)
   }
+
+  const RestCardPromoted = withPromotedLabel(RestCard)
 
   return (
     <div>
@@ -42,11 +45,18 @@ const Body = () => {
       </div>
       <div className="rest-container p-4 pt-0">
         {restList.length !== 0
-          ? restList.map((item) => (
-              <Link to={`/restaurants/${item.info.id}`} key={item.info.id}>
-                <RestCard key={item.info.id} restData={item} />
-              </Link>
-            ))
+          ? restList.map((item) =>
+              // item.info.promoted ? (
+              item.info.avgRating>4.5 ? (
+                <Link to={`/restaurants/${item.info.id}`} key={item.info.id}>
+                  <RestCardPromoted key={item.info.id} restData={item} />
+                </Link>
+              ) : (
+                <Link to={`/restaurants/${item.info.id}`} key={item.info.id}>
+                  <RestCard key={item.info.id} restData={item} />
+                </Link>
+              )
+            )
           : Array(15)
               .fill()
               .map((_, index) => <ShimmerCard key={index} />)}
