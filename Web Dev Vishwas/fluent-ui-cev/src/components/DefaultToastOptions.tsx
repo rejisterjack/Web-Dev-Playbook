@@ -27,7 +27,7 @@ export const DefaultToastOptions = () => {
         pauseOnWindowBlur
         timeout={1000}
       />
-      <Button onClick={notify}>Make toast</Button>
+      <Button onClick={notify} appearance="primary">Make toast</Button>
     </>
   )
 }
