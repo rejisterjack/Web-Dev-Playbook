@@ -2,6 +2,7 @@
 // import EnhancedForm from "./components/02.EnhancedForm"
 // import FormWithYup from "./components/03.FormWithYup"
 import FormWithZod from "./components/04.FormWithZod"
+import FluentComp from "./components/05.FluentComp"
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
             {/* <BasicForm /> */}
             {/* <EnhancedForm /> */}
             {/* <FormWithYup /> */}
-            <FormWithZod />
+            {/* <FormWithZod /> */}
+            <FluentComp />
           </div>
         </div>
       </div>

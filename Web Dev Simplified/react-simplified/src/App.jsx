@@ -1,9 +1,11 @@
 import Arrays from "./Arrays"
+import RefUse from "./RefUse"
 
 const App = () => {
   return (
     <>
-      <Arrays />
+      {/* <Arrays /> */}
+      <RefUse />
     </>
   )
 }
