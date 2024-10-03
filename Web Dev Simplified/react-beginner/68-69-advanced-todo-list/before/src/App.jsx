@@ -1,15 +1,47 @@
-import { useState } from "react"
+import { useReducer, useState } from "react"
 import "./styles.css"
 import { TodoItem } from "./TodoItem"
 
+const localStorageKey = "todos"
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "add":
+      return [
+        ...state,
+        { name: action.name, completed: false, id: crypto.randomUUID() },
+      ]
+    case "toggle":
+      return state.map((todo) => {
+        if (todo.id === action.id)
+          return { ...todo, completed: action.completed }
+
+        return todo
+      })
+    case "delete":
+      return state.filter((todo) => todo.id !== action.id)
+    default:
+      return state
+  }
+}
+
 function App() {
   const [newTodoName, setNewTodoName] = useState("")
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useReducer(reducer, [], (initialValue) => {
+    const savedTodos = localStorage.getItem(localStorageKey)
+    if (savedTodos) return JSON.parse(savedTodos)
+    return initialValue
+  })
+
+  // Save todos to local storage
+  useState(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(todos))
+  }, [todos])
 
   function addNewTodo() {
     if (newTodoName === "") return
 
-    setTodos(currentTodos => {
+    setTodos((currentTodos) => {
       return [
         ...currentTodos,
         { name: newTodoName, completed: false, id: crypto.randomUUID() },
@@ -19,8 +51,8 @@ function App() {
   }
 
   function toggleTodo(todoId, completed) {
-    setTodos(currentTodos => {
-      return currentTodos.map(todo => {
+    setTodos((currentTodos) => {
+      return currentTodos.map((todo) => {
         if (todo.id === todoId) return { ...todo, completed }
 
         return todo
@@ -29,15 +61,15 @@ function App() {
   }
 
   function deleteTodo(todoId) {
-    setTodos(currentTodos => {
-      return currentTodos.filter(todo => todo.id !== todoId)
+    setTodos((currentTodos) => {
+      return currentTodos.filter((todo) => todo.id !== todoId)
     })
   }
 
   return (
     <>
       <ul id="list">
-        {todos.map(todo => {
+        {todos.map((todo) => {
           return (
             <TodoItem
               key={todo.id}
@@ -55,7 +87,7 @@ function App() {
           type="text"
           id="todo-input"
           value={newTodoName}
-          onChange={e => setNewTodoName(e.target.value)}
+          onChange={(e) => setNewTodoName(e.target.value)}
         />
         <button onClick={addNewTodo}>Add Todo</button>
       </div>
