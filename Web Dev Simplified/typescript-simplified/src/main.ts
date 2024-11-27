@@ -3,26 +3,26 @@ const arr: number[] = [1, 2, 3, 4, 5]
 console.log(arr)
 
 // tuple
-const tuple: [number, string] = [1, 'hello']
+const tuple: [number, string] = [1, "hello"]
 console.log(tuple)
 
 // enum
 enum Color {
   Red,
   Green,
-  Blue
+  Blue,
 }
 const color: Color = Color.Red
 console.log(color)
 
 // any
 let anyValue: any = 4
-anyValue = 'hello'
+anyValue = "hello"
 console.log(anyValue)
 
 // void
 function sayHello(): void {
-  console.log('hello')
+  console.log("hello")
 }
 sayHello()
 
@@ -42,7 +42,7 @@ console.log(add(1, 2))
 function printObject(obj: { name: string; age: number }) {
   console.log(obj)
 }
-printObject({ name: 'John', age: 30 })
+printObject({ name: "John", age: 30 })
 
 // rest parameter
 function sum(...args: number[]): number {
@@ -64,7 +64,7 @@ const numbers = [1, 2, 3, 4, 5]
 console.log(sumAll(...numbers))
 
 // type assertion
-const value: any = 'hello'
+const value: any = "hello"
 const length = (value as string).length
 console.log(length)
 
@@ -73,7 +73,7 @@ function printId(id: number | string) {
   console.log(id)
 }
 printId(1)
-printId('hello')
+printId("hello")
 
 // type alias
 type Id = number | string
@@ -81,7 +81,7 @@ function printId2(id: Id) {
   console.log(id)
 }
 printId2(1)
-printId2('hello')
+printId2("hello")
 
 // interface
 interface Person {
@@ -91,7 +91,7 @@ interface Person {
 function printPerson(person: Person) {
   console.log(person)
 }
-printPerson({ name: 'John', age: 30 })
+printPerson({ name: "John", age: 30 })
 
 // optional property
 interface Person2 {
@@ -101,13 +101,13 @@ interface Person2 {
 function printPerson2(person: Person2) {
   console.log(person)
 }
-printPerson2({ name: 'John' })
+printPerson2({ name: "John" })
 
 // readonly property
 interface Person3 {
   readonly name: string
 }
-const person: Person3 = { name: 'John' }
+const person: Person3 = { name: "John" }
 // person.name = 'Jane'
 
 // index signature
@@ -115,5 +115,32 @@ interface Person4 {
   name: string
   [key: string]: any
 }
-const person2: Person4 = { name: 'John', age: 30 }
+const person2: Person4 = { name: "John", age: 30 }
 console.log(person2)
+
+// generic
+const getSecondElement = <T>(arr: T[]): T => arr[1]
+
+const secondElementNumber = getSecondElement([1, 2, 3])
+console.log(secondElementNumber)
+const secondElementString = getSecondElement(["hello", "world"])
+console.log(secondElementString)
+
+const arrayToObj = <T>(arr: [string, T][]): { [key: string]: T } =>
+  arr.reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
+
+const arrGen: [string, number | string | boolean][] = [
+  ["keyOne", 1],
+  ["keyTwo", "valueTwo"],
+  ["keyThree", true],
+]
+
+const obj = arrayToObj(arrGen)
+console.log(obj)
+
+// async functions
+const wait = (duration: number): Promise<string> => {
+  return new Promise<string>((resolve) => {
+    setTimeout(resolve, duration)
+  })
+}
