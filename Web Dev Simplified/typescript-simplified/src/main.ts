@@ -144,3 +144,79 @@ const wait = (duration: number): Promise<string> => {
     setTimeout(resolve, duration)
   })
 }
+
+// pick and omit
+type Person5 = {
+  name: string
+  age: number
+  address: string
+}
+type PersonName = Pick<Person5, "name" | "age">
+type PersonWithoutAddress = Omit<Person5, "address">
+
+// partial and required
+type Person6 = {
+  name: string
+  age?: number
+}
+type PersonRequired = Required<Person6>
+type PersonPartial = Partial<Person6>
+
+// required with pick
+type PersonNameRequired = Required<Pick<Person5, "name" | "age">>
+const personNameRequired: PersonNameRequired = { name: "John", age: 30 }
+console.log(personNameRequired)
+
+// partial with omit
+type PersonWithoutAddressPartial = Partial<Omit<Person5, "address">>
+const personWithoutAddressPartial: PersonWithoutAddressPartial = {
+  name: "John",
+}
+console.log(personWithoutAddressPartial)
+
+type RequiredPick<T, K extends keyof T> = Required<Pick<T, K>>
+type PartialOmit<T, K extends keyof T> = Partial<Omit<T, K>>
+
+// returntype
+type Person7 = {
+  name: string
+  age: number
+}
+type PersonNameReturnType = ReturnType<() => Person7>
+const personNameReturnType: PersonNameReturnType = { name: "John", age: 30 }
+console.log(personNameReturnType)
+// ReturnType in functions
+function createPerson(name: string, age: number) {
+  return { name, age }
+}
+
+type CreatePersonReturnType = ReturnType<typeof createPerson>
+const newPerson: CreatePersonReturnType = createPerson("Alice", 25)
+console.log(newPerson)
+
+// Parameters
+type CreatePersonParameters = Parameters<typeof createPerson>
+const newPerson2: CreatePersonParameters = ["Alice", 25]
+console.log(newPerson2)
+
+// record
+type PersonRecord = Record<string, Person7>
+const people: PersonRecord = {
+  john: { name: "John", age: 30 },
+  jane: { name: "Jane", age: 25 },
+}
+
+// awaited
+type Awaited<T> = T extends Promise<infer U> ? U : T
+type AwaitedString = Awaited<Promise<string>>
+const awaitedString: AwaitedString = "hello"
+console.log(awaitedString)
+
+// function overload
+function add2(a: number, b: number): number
+function add2(a: string, b: string): string
+function add2(a: any, b: any): any {
+  return a + b
+}
+console.log(add2(1, 2))
+console.log(add2("hello", "world"))
