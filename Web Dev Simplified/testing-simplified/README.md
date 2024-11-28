@@ -1,50 +1,84 @@
-# React + TypeScript + Vite
+# Setting Up Vitest and Testing Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This guide will walk you through the steps to set up Vitest and Testing Library in your project.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Make sure you have the following installed:
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-## Expanding the ESLint configuration
+## Step 1: Install Vitest
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+First, install Vitest as a development dependency:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install --save-dev vitest
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Step 2: Install Testing Library
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Next, install the necessary Testing Library packages:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install --save-dev @testing-library/react @testing-library/jest-dom
 ```
+
+## Step 3: Configure Vitest
+
+Create a `vitest.config.js` file in the root of your project and add the following configuration:
+
+```javascript
+/// <reference types="vitest" />
+
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './setupTests.js',
+  },
+});
+```
+
+## Step 4: Setup Testing Library
+
+Create a `setupTests.js` file in the root of your project and add the following setup code:
+
+```javascript
+import '@testing-library/jest-dom';
+```
+
+## Step 5: Write Your Tests
+
+You can now write your tests using Vitest and Testing Library. Create a `__tests__` directory and add your test files there. For example, create a `App.test.js` file:
+
+```javascript
+import { render, screen } from '@testing-library/react';
+import App from '../src/App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+## Step 6: Run Your Tests
+
+To run your tests, add the following script to your `package.json`:
+
+```json
+"scripts": {
+  "test": "vitest"
+}
+```
+
+Then, run the tests using the following command:
+
+```bash
+npm test
+```
+
+That's it! You have successfully set up Vitest and Testing Library in your project. Happy testing!
