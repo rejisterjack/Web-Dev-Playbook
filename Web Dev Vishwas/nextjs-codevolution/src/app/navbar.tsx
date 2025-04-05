@@ -14,7 +14,7 @@ const navLinks = [
 const Navbar = () => {
   const pathName = usePathname()
   return (
-    <div className="flex flex-row p-4 gap-4 items-center justify-center h-screen">
+    <div className="flex flex-row p-4 gap-4 items-center justify-center h-20">
       {navLinks.map((link) => (
         <Link
           key={link.path}
