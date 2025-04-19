@@ -1,0 +1,2 @@
+cargo init => for project eg: node project
+cargo init --lib => for library eg: express
