@@ -1,0 +1,17 @@
+body {
+  background-color: #222;
+  font-family: Arial, sans-serif;
+  color: #eee;
+}
+
+button {
+  background-color: #444;
+  color: #eee;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:active {
+    transform: translateY(2px);
+  }
+}
