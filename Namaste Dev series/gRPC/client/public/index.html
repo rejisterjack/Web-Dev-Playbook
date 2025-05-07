@@ -28,7 +28,13 @@
   <div class="container">
     <!-- Form is now above the list and uses grid layout -->
     <div class="customer-form">
-      <h2 id="form-title">Add New Customer</h2>
+      <div class="form-header">
+        <h2 id="form-title">Add New Customer</h2>
+        <div class="form-buttons">
+          <button type="button" class="submit-btn" id="submit-form">Submit</button>
+          <button type="button" class="reset-btn" id="reset-form">Reset</button>
+        </div>
+      </div>
       <form id="customer-form">
         <input type="hidden" id="customer-id">
         
@@ -65,12 +71,6 @@
           <div>
             <label for="country">Country:</label>
             <input type="text" id="country">
-          </div>
-          
-          <!-- Buttons span the full width -->
-          <div class="form-buttons">
-            <button type="submit" class="submit-btn">Submit</button>
-            <button type="button" class="reset-btn" id="reset-form">Reset</button>
           </div>
         </div>
       </form>

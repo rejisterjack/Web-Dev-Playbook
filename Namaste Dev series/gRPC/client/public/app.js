@@ -3,6 +3,7 @@ let editing = false;
 const form = document.getElementById('customer-form');
 const formTitle = document.getElementById('form-title');
 const resetBtn = document.getElementById('reset-form');
+const submitBtn = document.getElementById('submit-form');
 const refreshBtn = document.getElementById('refresh-btn');
 
 // Event listeners
@@ -12,15 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Button event listeners
   refreshBtn.addEventListener('click', loadCustomers);
   resetBtn.addEventListener('click', resetForm);
+  submitBtn.addEventListener('click', handleFormSubmit);
   
-  // Form submit handler
-  form.addEventListener('submit', handleFormSubmit);
+  // Form submit handler (prevent default submission)
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
 });
 
 // Form submission handler
 function handleFormSubmit(event) {
-  event.preventDefault();
-  
   const customerData = {
     name: document.getElementById('name').value,
     email: document.getElementById('email').value,
@@ -32,6 +34,12 @@ function handleFormSubmit(event) {
     country: document.getElementById('country').value,
     orders: []
   };
+  
+  // Form validation
+  if (!customerData.name || !customerData.email || !customerData.phone) {
+    alert('Please fill in all required fields');
+    return;
+  }
   
   if (editing) {
     const id = document.getElementById('customer-id').value;
@@ -92,7 +100,7 @@ function viewCustomer(id) {
       
       // Disable editing
       toggleFormInputs(true);
-      document.querySelector('.submit-btn').style.display = 'none';
+      submitBtn.style.display = 'none';
       showLoadingIndicator(false);
     })
     .catch(error => {
@@ -115,7 +123,7 @@ function editCustomer(id) {
       // Enable editing mode
       editing = true;
       toggleFormInputs(false);
-      document.querySelector('.submit-btn').style.display = 'block';
+      submitBtn.style.display = 'block';
       
       // Scroll to form
       document.querySelector('.customer-form').scrollIntoView({ behavior: 'smooth' });
@@ -180,7 +188,7 @@ function resetForm() {
   
   // Enable all inputs
   toggleFormInputs(false);
-  document.querySelector('.submit-btn').style.display = 'block';
+  submitBtn.style.display = 'block';
 }
 
 // Helper functions
