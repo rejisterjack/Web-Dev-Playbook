@@ -1,0 +1,12 @@
+{
+  "name": "server-sent-events-demo",
+  "version": "1.0.0",
+  "description": "A simple Server-Sent Events example with Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
