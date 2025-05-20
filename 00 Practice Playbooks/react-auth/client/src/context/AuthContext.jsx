@@ -3,7 +3,8 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signInWithRedirect,
+  signInWithPopup,
+  // signInWithRedirect,
   signOut,
 } from 'firebase/auth'
 import { auth } from '../config/firebase.config'
@@ -26,7 +27,8 @@ export const AuthProvider = ({ children }) => {
     return await signInWithEmailAndPassword(auth, email, password)
   }
   const loginWithGoogle = async () => {
-    return await signInWithRedirect(auth, providerGoogle)
+    // return await signInWithRedirect(auth, providerGoogle)
+    return await signInWithPopup(auth, providerGoogle)
   }
   const logout = async () => {
     return await signOut(auth)
