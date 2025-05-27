@@ -8,4 +8,5 @@ export { default as Home } from './Home'
 export { default as InfiniteScroll } from './InfiniteScroll'
 export { default as SearchBar } from './SearchBar'
 export { default as Toast } from './Toast'
+export { default as Pagination } from './Pagination'
 

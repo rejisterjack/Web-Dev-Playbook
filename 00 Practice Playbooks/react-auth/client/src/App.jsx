@@ -13,6 +13,7 @@ import {
   InfiniteScroll,
   SearchBar,
   Toast,
+  Pagination,
 } from './pages'
 
 const App = () => {
@@ -99,6 +100,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <SearchBar />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/pagination'
+            element={
+              <ProtectedRoute>
+                <Pagination />
               </ProtectedRoute>
             }
           />

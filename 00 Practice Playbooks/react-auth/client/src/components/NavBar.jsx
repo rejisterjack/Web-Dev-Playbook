@@ -18,6 +18,7 @@ const NavBar = () => {
     { path: '/breadcrumb', label: 'Breadcrumb' },
     { path: '/formvalidations', label: 'Form Validations' },
     { path: '/searchbar', label: 'Search Bar' },
+    { path: '/pagination', label: 'Pagination' },
   ]
 
   return (
