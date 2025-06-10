@@ -3,8 +3,12 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "dev": "nodemon --exec bun run index.ts"
+  },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "nodemon": "^3.1.10"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -12,8 +16,10 @@
   "dependencies": {
     "@prisma/client": "^6.9.0",
     "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.2",
     "@types/jsonwebtoken": "^9.0.9",
     "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "prisma": "^6.9.0"
   }

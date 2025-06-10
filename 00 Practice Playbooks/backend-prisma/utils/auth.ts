@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-const JWT_SECTER = 'my-secret-key'
+export const JWT_SECRET = 'my-secret-key'
 
 export function generatePassword(password: string) {
   const salt = bcrypt.genSaltSync(10)
@@ -17,7 +17,7 @@ export function generateToken(userId: string, role: string) {
       userId,
       role,
     },
-    JWT_SECTER
+    JWT_SECRET
   )
   return token
 }
