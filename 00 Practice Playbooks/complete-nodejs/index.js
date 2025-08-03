@@ -24,4 +24,19 @@
 //   if (bar.complete) clearInterval(progInterval)
 // }, 100)
 
+// const path = require('path')
+// const filePath = "./files/sample.txt"
 
+// console.log(__dirname)
+// console.log(path.dirname(filePath))
+// console.log(__filename)
+// console.log(path.basename(filePath))
+// console.log(path.extname(filePath))
+
+// const fs = require('fs')
+// const sampleFilePath = path.join(__dirname, 'files', 'sample.txt')
+
+// fs.readFile(sampleFilePath, 'utf-8', (err, data) => {
+//   if (err) throw new Error('some error occuren')
+//   console.log(data)
+// })
