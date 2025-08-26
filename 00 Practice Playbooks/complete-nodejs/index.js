@@ -1,42 +1,19 @@
-// console.log('Hello there, my name is %s and i am %d years old', 'rupam', 24)
+const express = require('express')
+const port = 3000
 
-// const sum = () => console.log(`sum of 2 + 3 is ${2 + 3}`)
-// const multiply = () => console.log(`multiply of 2 * 3 is ${2 * 3}`)
+const app = express()
 
-// const measureTime = () => {
-//   console.time('sum()')
-//   sum()
-//   console.timeEnd('sum()')
-//   console.time('multiply()')
-//   multiply()
-//   console.timeEnd('multiply()')
-// }
+const loggerMiddleware = (req, res, next) => {
+  console.log(`${new Date()} --- Request ${req.method} | ${req.url}`)
+  next()
+}
 
-// measureTime()
+app.use(loggerMiddleware)
 
-// const ProgressBar = require('progress')
-// const bar = new ProgressBar('downloading [:bar] :rate/bps :percent :etas', {
-//   total: 20,
-// })
+app.get('/', (req, res) => {
+  res.send('server is up and running')
+})
 
-// const progInterval = setInterval(() => {
-//   bar.tick()
-//   if (bar.complete) clearInterval(progInterval)
-// }, 100)
-
-// const path = require('path')
-// const filePath = "./files/sample.txt"
-
-// console.log(__dirname)
-// console.log(path.dirname(filePath))
-// console.log(__filename)
-// console.log(path.basename(filePath))
-// console.log(path.extname(filePath))
-
-// const fs = require('fs')
-// const sampleFilePath = path.join(__dirname, 'files', 'sample.txt')
-
-// fs.readFile(sampleFilePath, 'utf-8', (err, data) => {
-//   if (err) throw new Error('some error occuren')
-//   console.log(data)
-// })
+app.listen(port, () => {
+  console.log(`server is running on http://localhost:${port}`)
+})
