@@ -1,5 +1,5 @@
 // import UseStateHook from "./hooks/UseStateHook";
-import UseEffectHook from "./hooks/UseEffectHook"
+import UseEffectHook from "./hooks/03.UseEffectHook"
 
 const App = () => {
 	return (
