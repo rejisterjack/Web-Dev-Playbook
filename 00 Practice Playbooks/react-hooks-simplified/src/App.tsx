@@ -1,7 +1,13 @@
-import UseStateHook from "./hooks/UseStateHook";
+// import UseStateHook from "./hooks/UseStateHook";
+import UseEffectHook from "./hooks/UseEffectHook"
 
 const App = () => {
-	return <UseStateHook />;
+	return (
+		<>
+			{/* <UseStateHook /> */}
+      <UseEffectHook />
+		</>
+	);
 };
 
 export default App;
