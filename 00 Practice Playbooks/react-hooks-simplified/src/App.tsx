@@ -1,5 +1,7 @@
+import UseStateHook from "./hooks/UseStateHook";
+
 const App = () => {
-	return <div>App</div>;
+	return <UseStateHook />;
 };
 
 export default App;
