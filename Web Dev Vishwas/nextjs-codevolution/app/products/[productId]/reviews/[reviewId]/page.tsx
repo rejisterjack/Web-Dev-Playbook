@@ -1,20 +1,42 @@
-import { notFound } from 'next/navigation'
-import React from 'react'
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
-const ReviewDetails = async ({
+type ReviewDetailsProps = {
+  params: { productId: string; reviewId: string };
+};
+
+export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ productId: string; reviewId: string }>
-}) => {
-  const { productId, reviewId } = await params
+}: ReviewDetailsProps): Promise<Metadata> {
+  const { productId, reviewId } = params;
 
-  if (+productId > 1000) return notFound()
+  if (+productId > 1000) {
+    return {
+      title: "Not Found",
+      description: "This product does not exist",
+    };
+  }
+
+  return {
+    title: `Review ${reviewId} for Product ${productId}`,
+    description: `Detailed review ${reviewId} about product ${productId}.`,
+    openGraph: {
+      title: `Review ${reviewId} for Product ${productId}`,
+      description: `Read review ${reviewId} about product ${productId}.`,
+    },
+  };
+}
+
+const ReviewDetails = ({ params }: ReviewDetailsProps) => {
+  const { productId, reviewId } = params;
+
+  if (+productId > 1000) return notFound();
 
   return (
     <div>
       ReviewDetails {reviewId} for Product {productId}
     </div>
-  )
-}
+  );
+};
 
-export default ReviewDetails
+export default ReviewDetails;

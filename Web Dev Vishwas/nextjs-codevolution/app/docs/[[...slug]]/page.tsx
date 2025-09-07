@@ -1,4 +1,10 @@
+import { Metadata } from 'next'
 import React from 'react'
+
+export const metadata: Metadata = {
+  title: "Docs page",
+  description: "docs page description"
+}
 
 const DocsDetails = async ({
   params,
@@ -11,7 +17,7 @@ const DocsDetails = async ({
     <div>
       DocsDetails
       <div>
-        {slug.map((item, index) => {
+        {slug?.map((item, index) => {
           return <p key={index}>{item}</p>
         })}
       </div>
