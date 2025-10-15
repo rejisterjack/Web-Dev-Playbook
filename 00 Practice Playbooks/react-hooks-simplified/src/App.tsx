@@ -1,8 +1,10 @@
 // import UseStateHook from "./hooks/UseStateHook";
 // import UseEffectHook from "./hooks/03.UseEffectHook";
+// import UseContextHook from "./hooks/04.UseContextHook";
 import { useState } from "react";
 import { AppContext } from "./AppContext";
-import UseContextHook from "./hooks/04.UseContextHook";
+import UseRefHook from "./hooks/05.UseRefHook"
+import UseMemoHook from "./hooks/06.UseMemoHook"
 
 export type Data = {
 	firstName: string;
@@ -21,7 +23,9 @@ const App = () => {
 		<AppContext.Provider value={{ data, setData }}>
 			{/* <UseStateHook /> */}
 			{/* <UseEffectHook /> */}
-			<UseContextHook />
+			{/* <UseContextHook /> */}
+			{/* <UseRefHook /> */}
+			<UseMemoHook />
 		</AppContext.Provider>
 	);
 };
