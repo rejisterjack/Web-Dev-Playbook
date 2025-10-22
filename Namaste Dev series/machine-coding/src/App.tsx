@@ -1,5 +1,9 @@
+import Checkboxes from "./components/checkboxes/Checkboxes"
+
 const App = () => {
-  return <div>App</div>
+  return <div>
+    <Checkboxes />
+  </div>
 }
 
 export default App
