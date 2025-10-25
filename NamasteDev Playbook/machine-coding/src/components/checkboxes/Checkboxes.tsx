@@ -1,8 +1,7 @@
-import React from 'react'
 
 const Checkboxes = () => {
   return (
-    <div>Checkboxes</div>
+    <div draggable="true">Checkboxes</div>
   )
 }
 
