@@ -1,7 +1,16 @@
+import type { Node } from './types'
 
-const Checkboxes = () => {
+const Checkboxes = ({ data }: { data: Node[] }) => {
   return (
-    <div draggable="true">Checkboxes</div>
+    <div>
+      {data.map((item) => (
+        <div key={item.id}>
+          <input type='checkbox' />
+          <span>{item.name}</span>
+          {item?.children && <Checkboxes data={item.children} />}
+        </div>
+      ))}
+    </div>
   )
 }
 
