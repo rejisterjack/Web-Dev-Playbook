@@ -1,8 +1,9 @@
 import type { Node } from './types'
+import "./style.css"
 
 const Checkboxes = ({ data }: { data: Node[] }) => {
   return (
-    <div>
+    <div className='check-container'>
       {data.map((item) => (
         <div key={item.id}>
           <input type='checkbox' />
