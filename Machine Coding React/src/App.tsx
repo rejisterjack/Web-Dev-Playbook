@@ -1,9 +1,10 @@
+import { CheckboxData } from './components/checkboxes/CheckboxData'
 import Checkboxes from './components/checkboxes/Checkboxes'
 
 function App() {
   return (
     <>
-      <Checkboxes />
+      <Checkboxes data={CheckboxData} />
     </>
   )
 }
