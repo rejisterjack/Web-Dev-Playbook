@@ -1,9 +1,10 @@
 import type React from 'react'
 import type { CheckboxNode } from './types'
+import "./style.css"
 
 const Checkboxes: React.FC<{ data: CheckboxNode[] }> = ({ data }) => {
   return (
-    <div>
+    <div className='checkbox-container'>
       {data.map((item) => (
         <div key={item?.id}>
           <input type='checkbox' name='' id='' />
