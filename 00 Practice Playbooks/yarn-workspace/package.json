@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "name": "monorepo-practice",
+  "workspaces": ["client", "server"]
+}
