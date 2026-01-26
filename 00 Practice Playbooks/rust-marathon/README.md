@@ -1,3 +1,0 @@
-## 
-
-initialize project => cargo init
