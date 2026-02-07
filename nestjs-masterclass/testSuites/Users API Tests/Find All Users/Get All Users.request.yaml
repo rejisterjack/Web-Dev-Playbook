@@ -1,0 +1,45 @@
+id: 205fa6ff-9824-4526-95a7-01e8fbbd0989
+name: Get All Users
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: get
+  headers:
+    - key: Accept
+      value: application/json
+  body:
+    mode: none
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - // Validate status code is 200 OK
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - // Validate response is an array
+        - pq.test('Response is an array', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.be.an(''array'');'
+        - '});'
+        - ''
+        - // Validate array items are objects with id property
+        - pq.test('Response items are user objects', function () {
+        - '    const response = pq.response.json();'
+        - '    if (response.length > 0) {'
+        - '        response.forEach(user => {'
+        - '            pq.expect(user).to.be.an(''object'');'
+        - '            pq.expect(user).to.have.property(''id'');'
+        - '        });'
+        - '    }'
+        - '});'
+        - ''
+      src: ''
+      packages: []
+type: request

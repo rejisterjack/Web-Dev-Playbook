@@ -1,0 +1,12 @@
+description: >-
+  Test retrieving all users and verify the response is an array with user
+  objects
+id: 282457ef-eac9-4777-a8c8-db5f039e551d
+name: Find All Users
+dependencies: []
+type: TESTCASE
+testSuiteId: cd436595-60a8-4526-a388-9944a6a8803b
+parentId: cd436595-60a8-4526-a388-9944a6a8803b
+testSteps:
+  - fileReference: Get All Users.request.yaml
+    type: request

@@ -1,0 +1,45 @@
+id: c3ef779f-888d-499b-bed0-9c81ba32733a
+name: Create User with Valid Data
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: post
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - // Validate status code is 201 Created
+        - pq.test('Status code is 201', function () {
+        - '    pq.response.to.have.status(201);'
+        - '});'
+        - ''
+        - // Validate response has ID property
+        - pq.test('Response contains user ID', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.have.property(''id'');'
+        - '    pq.environment.set(''createdUserId'', response.id);'
+        - '});'
+        - ''
+        - // Validate response is an object
+        - pq.test('Response is an object', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.be.an(''object'');'
+        - '});'
+        - ''
+      src: ''
+      packages: []
+type: request

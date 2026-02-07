@@ -1,0 +1,39 @@
+id: 5dd47965-ccf6-4099-a69d-7c8f282e6352
+name: Create Test User
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: post
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - // Validate status code is 201 Created
+        - pq.test('Status code is 201', function () {
+        - '    pq.response.to.have.status(201);'
+        - '});'
+        - ''
+        - // Extract user ID for next step
+        - pq.test('Extract user ID', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.have.property(''id'');'
+        - '    pq.environment.set(''testUserId'', response.id);'
+        - '});'
+        - ''
+      src: ''
+      packages: []
+type: request

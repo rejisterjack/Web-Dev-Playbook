@@ -1,0 +1,14 @@
+description: >-
+  Test retrieving a specific user by ID and verify the response contains the
+  correct user details
+id: 71265c62-1fe0-462f-84d0-d54fb2c48862
+name: Find User by ID
+dependencies: []
+type: TESTCASE
+testSuiteId: cd436595-60a8-4526-a388-9944a6a8803b
+parentId: cd436595-60a8-4526-a388-9944a6a8803b
+testSteps:
+  - fileReference: Create Test User.request.yaml
+    type: request
+  - fileReference: Get User by ID.request.yaml
+    type: request

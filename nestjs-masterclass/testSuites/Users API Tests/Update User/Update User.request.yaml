@@ -1,0 +1,42 @@
+id: 75c0445c-b70e-45a9-8c52-984e4afe05e0
+name: Update User
+request:
+  url:
+    raw: '{{baseUrl}}/users/{{userToUpdateId}}'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+      - '{{userToUpdateId}}'
+  method: patch
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - // Validate status code is 200 OK
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - // Validate response is an object with id property
+        - pq.test('Response contains updated user', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.be.an(''object'');'
+        - '    pq.expect(response).to.have.property(''id'');'
+        - '    const userToUpdateId = pq.environment.get(''userToUpdateId'');'
+        - '    pq.expect(response.id).to.equal(userToUpdateId);'
+        - '});'
+        - ''
+      src: ''
+      packages: []
+type: request

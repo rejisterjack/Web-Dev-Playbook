@@ -1,0 +1,15 @@
+description: >-
+  Comprehensive API test suite for users CRUD operations including positive and
+  negative test scenarios
+id: cd436595-60a8-4526-a388-9944a6a8803b
+name: Users API Tests
+disabled: false
+before: []
+beforeEach: []
+testGroup: []
+testCases: []
+afterEach: []
+after: []
+runConfigs: []
+auth:
+  type: none

@@ -1,0 +1,39 @@
+id: 7587002d-feb3-402f-a694-128327e8dd83
+name: Create Test User
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: post
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - // Validate status code is 201 Created
+        - pq.test('Status code is 201', function () {
+        - '    pq.response.to.have.status(201);'
+        - '});'
+        - ''
+        - // Extract user ID for update step
+        - pq.test('Extract user ID for update', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.have.property(''id'');'
+        - '    pq.environment.set(''userToUpdateId'', response.id);'
+        - '});'
+        - ''
+      src: ''
+      packages: []
+type: request
