@@ -1,0 +1,28 @@
+code: 201
+headers:
+  _items:
+    - key: X-Powered-By
+      value: Express
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Content-Length
+      value: '148'
+    - key: Etag
+      value: W/"94-sTIiVEMfOlw1KrgwAeWcbbol6OY"
+    - key: Date
+      value: Sun, 08 Feb 2026 16:17:42 GMT
+    - key: Connection
+      value: close
+cookies: []
+body: >-
+  {"id":2,"email":"test_user_1770567462@example.com","name":"Test
+  User","createdAt":"2026-02-08T16:17:42.651Z","updatedAt":"2026-02-08T16:17:42.651Z"}
+responseTime: 21
+status: Created
+responseSize: 148
+assertions:
+  - name: Status code is 201
+    passed: true
+  - name: Response contains user ID
+    passed: true
+logs: []

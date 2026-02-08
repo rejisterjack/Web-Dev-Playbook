@@ -1,0 +1,41 @@
+code: 500
+headers:
+  _items:
+    - key: X-Powered-By
+      value: Express
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Content-Length
+      value: '52'
+    - key: Etag
+      value: W/"34-rlKccw1E+/fV8niQk4oFitDfPro"
+    - key: Date
+      value: Sun, 08 Feb 2026 16:39:00 GMT
+    - key: Connection
+      value: close
+cookies: []
+body: '{"statusCode":500,"message":"Internal server error"}'
+responseTime: 109
+status: Internal Server Error
+responseSize: 52
+assertions:
+  - name: Status code is 200
+    passed: false
+    reason:
+      message: expected response status code to be 200 but got 500
+      showDiff: true
+      actual: 500
+      expected: 200
+      operator: strictEqual
+  - name: Response is an array
+    passed: false
+    reason:
+      message: 'expected { statusCode: 500, …(1) } to be an array'
+      showDiff: false
+      actual:
+        statusCode: 500
+        message: Internal server error
+      operator: strictEqual
+  - name: Each user has required properties
+    passed: true
+logs: []
