@@ -1,0 +1,17 @@
+description: >-
+  Test deleting an existing user. Verifies that the API returns 200 status code
+  and successfully deletes the user. Includes setup to create a test user and
+  verification that the user is deleted.
+id: f2c2eb57-e7f0-43e5-b58d-df588c77cae8
+name: Delete User
+dependencies: []
+type: TESTCASE
+testSuiteId: 42513a30-caa9-4d8b-b3cd-171777bc884e
+parentId: 42513a30-caa9-4d8b-b3cd-171777bc884e
+testSteps:
+  - fileReference: Setup- Create Test User.request.yaml
+    type: request
+  - fileReference: DELETE User.request.yaml
+    type: request
+  - fileReference: Verify User Deleted.request.yaml
+    type: request

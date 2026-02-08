@@ -1,0 +1,34 @@
+description: Create a new user with valid data
+id: 55b5409f-e8ab-410f-a4de-f2a4e0602f80
+name: POST Create User
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: post
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 201', function () {
+        - '    pq.response.to.have.status(201);'
+        - '});'
+        - pq.test('Response contains user ID', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.have.property(''id'');'
+        - '    pq.variables.set(''createdUserId'', response.id);'
+        - '});'
+      src: ''
+      packages: []
+type: request

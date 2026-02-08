@@ -1,0 +1,17 @@
+description: >-
+  Test updating an existing user. Verifies that the API returns 200 status code
+  and successfully updates user data. Includes setup to create a test user
+  first.
+id: 02a13730-3bdd-46a2-ade1-73cc4d5c861a
+name: Update User
+dependencies: []
+type: TESTCASE
+testSuiteId: 42513a30-caa9-4d8b-b3cd-171777bc884e
+parentId: 42513a30-caa9-4d8b-b3cd-171777bc884e
+testSteps:
+  - fileReference: Setup- Create Test User.request.yaml
+    type: request
+  - fileReference: PATCH Update User.request.yaml
+    type: request
+  - fileReference: Cleanup- Delete Test User.request.yaml
+    type: request

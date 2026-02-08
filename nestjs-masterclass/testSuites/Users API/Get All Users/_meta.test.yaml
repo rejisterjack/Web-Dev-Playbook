@@ -1,0 +1,12 @@
+description: >-
+  Test retrieving all users. Verifies that the API returns 200 status code and
+  returns an array of users.
+id: be26053e-e9af-49d2-8074-848734c404db
+name: Get All Users
+dependencies: []
+type: TESTCASE
+testSuiteId: 42513a30-caa9-4d8b-b3cd-171777bc884e
+parentId: 42513a30-caa9-4d8b-b3cd-171777bc884e
+testSteps:
+  - fileReference: GET All Users.request.yaml
+    type: request

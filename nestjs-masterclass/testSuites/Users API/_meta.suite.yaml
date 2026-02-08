@@ -1,0 +1,18 @@
+description: >-
+  Comprehensive API testing suite for the users module covering CRUD operations,
+  validation, and edge cases.
+id: 42513a30-caa9-4d8b-b3cd-171777bc884e
+name: Users API
+disabled: false
+before: []
+beforeEach: []
+testGroup: []
+testCases: []
+afterEach: []
+after: []
+runConfigs:
+  - name: global-configuration
+    global: variables/global-variables.variable.yaml
+    environment: ''
+auth:
+  type: none

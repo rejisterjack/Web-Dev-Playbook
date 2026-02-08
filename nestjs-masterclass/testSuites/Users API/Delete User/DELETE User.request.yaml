@@ -1,0 +1,32 @@
+description: Delete an existing user by ID
+id: a271e6f1-3afb-42a0-8850-81cb284bec08
+name: DELETE User
+request:
+  url:
+    raw: '{{baseUrl}}/users/{{deleteUserId}}'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+      - '{{deleteUserId}}'
+  method: delete
+  headers:
+    - key: Accept
+      value: application/json
+  body:
+    mode: none
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - pq.test('User deleted successfully', function () {
+        - '    const response = pq.response.json();'
+        - '    pq.expect(response).to.have.property(''id'');'
+        - '});'
+      src: ''
+      packages: []
+type: request

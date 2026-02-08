@@ -1,0 +1,28 @@
+description: Delete the test user created during setup
+id: 66c4dc5d-cf01-4826-94c9-62b51677d8a2
+name: 'Cleanup: Delete Test User'
+request:
+  url:
+    raw: '{{baseUrl}}/users/{{testUserId}}'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+      - '{{testUserId}}'
+  method: delete
+  headers:
+    - key: Accept
+      value: application/json
+  body:
+    mode: none
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - 'pq.test(''Cleanup: User deleted successfully'', function () {'
+        - '    pq.response.to.have.status(200);'
+        - '});'
+      src: ''
+      packages: []
+type: request
