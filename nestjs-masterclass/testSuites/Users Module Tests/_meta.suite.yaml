@@ -1,0 +1,16 @@
+description: Test suite for the Users Module CRUD operations
+id: 70563996-cc40-46ec-a4ca-b2e7f75ec019
+name: Users Module Tests
+disabled: false
+before: []
+beforeEach: []
+testGroup: []
+testCases: []
+afterEach: []
+after: []
+runConfigs:
+  - name: global-config
+    global: variables/global-variables.variable.yaml
+    environment: ''
+auth:
+  type: none

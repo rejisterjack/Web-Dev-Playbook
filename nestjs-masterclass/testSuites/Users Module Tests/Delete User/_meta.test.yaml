@@ -1,0 +1,12 @@
+description: Test case to verify user deletion functionality
+id: 45eb377b-806b-4dd4-b566-365c49218bb5
+name: Delete User
+dependencies: []
+type: TESTCASE
+testSuiteId: 70563996-cc40-46ec-a4ca-b2e7f75ec019
+parentId: 70563996-cc40-46ec-a4ca-b2e7f75ec019
+testSteps:
+  - fileReference: Create User (Setup).request.yaml
+    type: request
+  - fileReference: Delete User Request.request.yaml
+    type: request

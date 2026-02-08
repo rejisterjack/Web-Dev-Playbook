@@ -1,0 +1,29 @@
+id: 33432441-4e3e-4dcd-afe5-6afb04226f8a
+name: Get All Users Request
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: get
+  headers: []
+  body:
+    mode: none
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - pq.test('Response is an array', function () {
+        - '    const jsonData = pq.response.json();'
+        - '    pq.expect(jsonData).to.be.an(''array'');'
+        - '});'
+      src: ''
+      packages: []
+type: request

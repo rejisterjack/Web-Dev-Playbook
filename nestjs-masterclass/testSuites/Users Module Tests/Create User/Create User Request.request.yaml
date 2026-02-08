@@ -1,0 +1,38 @@
+id: a85f6383-ca45-43e0-b6e6-2d44f7c64735
+name: Create User Request
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: post
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "email": "testuser@example.com",
+        "name": "Test User"
+      }
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 201', function () {
+        - '    pq.response.to.have.status(201);'
+        - '});'
+        - ''
+        - pq.test('Response has id', function () {
+        - '    const jsonData = pq.response.json();'
+        - '    pq.expect(jsonData).to.have.property(''id'');'
+        - '    pq.variables.set(''userId'', jsonData.id);'
+        - '});'
+      src: ''
+      packages: []
+type: request

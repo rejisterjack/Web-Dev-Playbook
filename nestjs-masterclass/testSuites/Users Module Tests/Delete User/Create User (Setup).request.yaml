@@ -1,0 +1,37 @@
+id: bc29cf3c-563b-447d-8dbb-77f13e9261e3
+name: Create User (Setup)
+request:
+  url:
+    raw: '{{baseUrl}}/users'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+  method: post
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "email": "testuser_delete@example.com",
+        "name": "Test User Delete"
+      }
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 201', function () {
+        - '    pq.response.to.have.status(201);'
+        - '});'
+        - ''
+        - pq.test('Extract User ID', function () {
+        - '    const jsonData = pq.response.json();'
+        - '    pq.variables.set(''userId'', jsonData.id);'
+        - '});'
+      src: ''
+      packages: []
+type: request

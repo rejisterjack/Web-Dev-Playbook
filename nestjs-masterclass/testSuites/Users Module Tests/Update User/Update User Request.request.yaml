@@ -1,0 +1,37 @@
+id: 6dc57701-e41a-4329-98d8-f746d1589b99
+name: Update User Request
+request:
+  url:
+    raw: '{{baseUrl}}/users/{{userId}}'
+    host:
+      - '{{baseUrl}}'
+    path:
+      - users
+      - '{{userId}}'
+  method: patch
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "name": "Updated Name"
+      }
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - pq.test('Name is updated', function () {
+        - '    const jsonData = pq.response.json();'
+        - '    pq.expect(jsonData.name).to.eql(''Updated Name'');'
+        - '});'
+      src: ''
+      packages: []
+type: request
